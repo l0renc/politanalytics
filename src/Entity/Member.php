@@ -10,9 +10,12 @@ use App\Repository\MemberRepository;
 class Member
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "NONE")]
-    #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(type: "integer", unique: true)]
+    private ?int $memberId = null;
 
     #[ORM\Column(type: "string", length: 255)]
     private string $fullName;
@@ -26,10 +29,10 @@ class Member
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $nationalPoliticalGroup = null;
 
-    // Getters
-    public function getId(): ?int
+    public function getMemberId(): string
     {
-        return $this->id;
+        return $this->memberId;
+
     }
 
     public function getFullName(): string
@@ -53,9 +56,9 @@ class Member
     }
 
     // Setters
-    public function setId(int $id): self
+    public function setMemberId(int $id): self
     {
-        $this->id = $id;
+        $this->memberId = $id;
         return $this;
     }
 
