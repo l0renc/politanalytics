@@ -14,8 +14,8 @@ class Member
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: "integer", unique: true)]
-    private ?int $memberId = null;
+    #[ORM\Column(type: "integer", length: 50, nullable: true)]
+    private int $mepId;
 
     #[ORM\Column(type: "string", length: 255)]
     private string $fullName;
@@ -29,9 +29,15 @@ class Member
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $nationalPoliticalGroup = null;
 
-    public function getMemberId(): string
+    public function getId(): ?int
     {
-        return $this->memberId;
+        return $this->id;
+
+    }
+
+    public function getMepId(): ?int
+    {
+        return $this->mepId;
 
     }
 
@@ -56,9 +62,9 @@ class Member
     }
 
     // Setters
-    public function setMemberId(int $id): self
+    public function setMepId(int $id): self
     {
-        $this->memberId = $id;
+        $this->mepId = $id;
         return $this;
     }
 
@@ -85,5 +91,6 @@ class Member
         $this->nationalPoliticalGroup = $nationalPoliticalGroup;
         return $this;
     }
+
 }
 
