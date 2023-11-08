@@ -72,4 +72,19 @@ class Contact
         return $this;
     }
 
+    public function getContactDetail(): ?array
+    {
+        if ($this->facebook) {
+            return ['type' => 'facebook', 'value' => $this->facebook];
+        }
+        if ($this->twitter) {
+            return ['type' => 'twitter', 'value' => $this->twitter];
+        }
+        if ($this->email) {
+            return ['type' => 'email', 'value' => $this->email];
+        }
+
+        return null;
+    }
+
 }

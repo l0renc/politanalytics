@@ -61,7 +61,6 @@ class Member
         return $this->nationalPoliticalGroup;
     }
 
-    // Setters
     public function setMepId(int $id): self
     {
         $this->mepId = $id;
